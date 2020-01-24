@@ -14,20 +14,23 @@ import org.opennars.gui.NARSwing;
 import org.opennars.main.Shell;
 
 class run_nars{
+    //Run NARS in shell to use pipes
     public static void main(String args[]) throws Exception{
+        //NARS using all defaults (no specified id, config file, etc), see Shell.java in opennars repo
         String[] defaults = new String[] { "null", "null", "null", "null"};
         Nar nar = Shell.createNar(defaults);
+
+        //Get parameters from args passed in when process created from python script
         nar.narParameters.DERIVATION_PRIORITY_LEAK=Float.parseFloat(args[0]); //0.4f default
         nar.narParameters.VARIABLE_INTRODUCTION_COMBINATIONS_MAX=Integer.parseInt(args[1]); //8 default
         nar.narParameters.SEQUENCE_BAG_ATTEMPTS=Integer.parseInt(args[2]); //10 default
         nar.narParameters.TERM_LINK_MAX_MATCHED=Integer.parseInt(args[3]); //10 default
-        //new NARSwing(nar);
-        //nar.start();
         
+        //Start NARS in shell
         new Shell(nar).run(defaults);
         
+        //Pass in toothbrush.nal file
         String toothbrushfile = new String ( Files.readAllBytes( Paths.get("toothbrush.nal") ) );
-
         nar.addInput(toothbrushfile);
     } 
 }
