@@ -6,8 +6,8 @@ Recompile java NARS wrapper with javac -cp \\* *.java
 Run with python3 param_search.py
 
 **Brief Overview:**\
-run_nars.java is a wrapper to invoke NARS in the shell with all default parameters excepting the 4 passed in through args
-It takes in the toothbrush.nal file
+run_nars.java is a wrapper to invoke NARS in the shell with all default parameters excepting the 4 passed in through args\
+This file takes in toothbrush.nal and passes it to NARS
 
 param_search.py uses hyperopt with the search space defined by the 4 parameters:\
 DERIVATION_PRIORITY_LEAK, VARIABLE_INTRODUCTION_COMBINATIONS_MAX, SEQUENCE_BAG_ATTEMPTS and TERM_LINK_MAX_MATCHED\
