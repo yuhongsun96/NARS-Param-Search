@@ -1,6 +1,6 @@
 # Hyperparameter search for openNARS using toothbrush.nal
 
-To run, first compile and replace opennars-3.0.4-SNAPSHOT.jar from the opennars
+To run, first compile and replace opennars-3.0.4-SNAPSHOT.jar from the opennars\
 Recompile with javac -cp \\* *.java
 
 Run with python3 param_search.py
