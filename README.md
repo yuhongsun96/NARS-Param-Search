@@ -11,6 +11,5 @@ This file takes in toothbrush.nal and passes it to NARS
 
 param_search.py uses hyperopt with the search space defined by the 4 parameters:\
 DERIVATION_PRIORITY_LEAK, VARIABLE_INTRODUCTION_COMBINATIONS_MAX, SEQUENCE_BAG_ATTEMPTS and TERM_LINK_MAX_MATCHED\
-It invokes run_nars and pipes the output for analysis to look for the relevent goals from NARS output
-The loss for hyperopt optimization is the sum of the cycles where the goals first appear
-Using hyperopt, the end result is the best loss and the hyperparam values that resulted in it.
+It invokes run_nars and pipes the output for analysis to look for the relevent goals from NARS output.\
+The loss for hyperopt optimization is the sum of the cycles where the goals first appear.\
