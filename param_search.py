@@ -4,7 +4,7 @@ import time
 from hyperopt import hp, fmin, tpe, space_eval
 
 #NOTE: to understand the workings better, uncomment out any of the lines ending with DEBUG and change num_evals to 1
-num_evals = 10
+num_evals = 1
 
 # Objective: minimize iterations taken for nars to conclude desired goals
 def objective(args):
@@ -24,6 +24,7 @@ def objective(args):
     max_time = start_time + 10
     while time.time() < max_time and (not lighter_found or not reshape_found):
         newline = fd.readline().decode('utf-8')
+        print(newline)
         if "ECHO" not in newline and "(^lighter,{SELF},toothbrush)! %1.00;0.39%" in newline and not lighter_found:
             #print(newline) #DEBUG
             lighter_iter = int(re.findall('% {\d+', newline)[0][3:])
