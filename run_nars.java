@@ -10,7 +10,6 @@ import org.opennars.operator.Operation;
 import org.opennars.operator.Operator;
 import org.opennars.language.Term;
 import org.opennars.interfaces.Timable;
-import org.opennars.gui.NARSwing;
 import org.opennars.main.Shell;
 
 class run_nars{
