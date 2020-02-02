@@ -11,6 +11,7 @@ import org.opennars.operator.Operator;
 import org.opennars.language.Term;
 import org.opennars.interfaces.Timable;
 import org.opennars.main.Shell;
+import org.opennars.main.Debug;
 
 class run_nars{
     //Run NARS in shell to use pipes
@@ -24,6 +25,8 @@ class run_nars{
         nar.narParameters.VARIABLE_INTRODUCTION_COMBINATIONS_MAX=Integer.parseInt(args[1]); //8 default
         nar.narParameters.SEQUENCE_BAG_ATTEMPTS=Integer.parseInt(args[2]); //10 default
         nar.narParameters.TERM_LINK_MAX_MATCHED=Integer.parseInt(args[3]); //10 default
+
+        Debug.PARENTS = true;
         
         //Start NARS in shell
         new Shell(nar).run(defaults);
