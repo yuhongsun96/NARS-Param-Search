@@ -1,0 +1,263 @@
+  0%|          | 0/30 [00:00<?, ?trial/s, best loss=?]                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.30492158337425523, 'SEQUENCE_BAG_ATTEMPTS': 34.0, 'TERM_LINK_MAX_MATCHED': 16.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 10.0}
+  0%|          | 0/30 [00:00<?, ?trial/s, best loss=?]                                                      	Batch results: [8, 8, 7, 8]
+  0%|          | 0/30 [00:02<?, ?trial/s, best loss=?]                                                      	Batch results: [8, 8, 7, 8]
+  0%|          | 0/30 [00:05<?, ?trial/s, best loss=?]                                                      	Batch results: [8, 8, 8, 8]
+  0%|          | 0/30 [00:07<?, ?trial/s, best loss=?]                                                      	Batch results: [7, 8, 50, 8]
+  0%|          | 0/30 [00:17<?, ?trial/s, best loss=?]                                                      Hyperopt Iteration Loss: 10.4375
+
+  0%|          | 0/30 [00:17<?, ?trial/s, best loss=?]  3%|▎         | 1/30 [00:17<08:39, 17.90s/trial, best loss: 10.4375]                                                                     Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.8941798694614435, 'SEQUENCE_BAG_ATTEMPTS': 40.0, 'TERM_LINK_MAX_MATCHED': 19.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 4.0}
+  3%|▎         | 1/30 [00:17<08:39, 17.90s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 50, 50]
+  3%|▎         | 1/30 [00:27<08:39, 17.90s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 9, 50, 50]
+  3%|▎         | 1/30 [00:37<08:39, 17.90s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 50, 50]
+  3%|▎         | 1/30 [00:48<08:39, 17.90s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 50, 50]
+  3%|▎         | 1/30 [00:58<08:39, 17.90s/trial, best loss: 10.4375]                                                                     Hyperopt Iteration Loss: 47.4375
+
+  3%|▎         | 1/30 [00:58<08:39, 17.90s/trial, best loss: 10.4375]  7%|▋         | 2/30 [00:58<11:29, 24.64s/trial, best loss: 10.4375]                                                                     Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.4851942432516032, 'SEQUENCE_BAG_ATTEMPTS': 12.0, 'TERM_LINK_MAX_MATCHED': 1.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 11.0}
+  7%|▋         | 2/30 [00:58<11:29, 24.64s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 8, 8, 50]
+  7%|▋         | 2/30 [01:08<11:29, 24.64s/trial, best loss: 10.4375]                                                                     	Batch results: [8, 8, 8, 6.5]
+  7%|▋         | 2/30 [01:10<11:29, 24.64s/trial, best loss: 10.4375]                                                                     	Batch results: [8, 8, 8, 50]
+  7%|▋         | 2/30 [01:21<11:29, 24.64s/trial, best loss: 10.4375]                                                                     	Batch results: [8, 50, 50, 8]
+  7%|▋         | 2/30 [01:31<11:29, 24.64s/trial, best loss: 10.4375]                                                                     Hyperopt Iteration Loss: 21.03125
+
+  7%|▋         | 2/30 [01:31<11:29, 24.64s/trial, best loss: 10.4375] 10%|█         | 3/30 [01:31<12:11, 27.10s/trial, best loss: 10.4375]                                                                     Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.45040274847746553, 'SEQUENCE_BAG_ATTEMPTS': 31.0, 'TERM_LINK_MAX_MATCHED': 44.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 1.0}
+ 10%|█         | 3/30 [01:31<12:11, 27.10s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 50, 50]
+ 10%|█         | 3/30 [01:41<12:11, 27.10s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 9, 50, 50]
+ 10%|█         | 3/30 [01:51<12:11, 27.10s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 50, 50]
+ 10%|█         | 3/30 [02:01<12:11, 27.10s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 50, 9]
+ 10%|█         | 3/30 [02:11<12:11, 27.10s/trial, best loss: 10.4375]                                                                     Hyperopt Iteration Loss: 44.875
+
+ 10%|█         | 3/30 [02:11<12:11, 27.10s/trial, best loss: 10.4375] 13%|█▎        | 4/30 [02:11<13:27, 31.06s/trial, best loss: 10.4375]                                                                     Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.2252922928071171, 'SEQUENCE_BAG_ATTEMPTS': 36.0, 'TERM_LINK_MAX_MATCHED': 15.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 14.0}
+ 13%|█▎        | 4/30 [02:11<13:27, 31.06s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 9, 50, 50]
+ 13%|█▎        | 4/30 [02:21<13:27, 31.06s/trial, best loss: 10.4375]                                                                     	Batch results: [7, 50, 50, 50]
+ 13%|█▎        | 4/30 [02:31<13:27, 31.06s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 50, 50]
+ 13%|█▎        | 4/30 [02:41<13:27, 31.06s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 9, 50]
+ 13%|█▎        | 4/30 [02:51<13:27, 31.06s/trial, best loss: 10.4375]                                                                     Hyperopt Iteration Loss: 42.1875
+
+ 13%|█▎        | 4/30 [02:51<13:27, 31.06s/trial, best loss: 10.4375] 17%|█▋        | 5/30 [02:51<14:05, 33.82s/trial, best loss: 10.4375]                                                                     Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.7786061607769408, 'SEQUENCE_BAG_ATTEMPTS': 39.0, 'TERM_LINK_MAX_MATCHED': 31.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 20.0}
+ 17%|█▋        | 5/30 [02:51<14:05, 33.82s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 9, 9, 9]
+ 17%|█▋        | 5/30 [03:01<14:05, 33.82s/trial, best loss: 10.4375]                                                                     	Batch results: [8.5, 9, 10, 9]
+ 17%|█▋        | 5/30 [03:04<14:05, 33.82s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 50, 9, 50]
+ 17%|█▋        | 5/30 [03:14<14:05, 33.82s/trial, best loss: 10.4375]                                                                     	Batch results: [8, 50, 9, 9]
+ 17%|█▋        | 5/30 [03:24<14:05, 33.82s/trial, best loss: 10.4375]                                                                     Hyperopt Iteration Loss: 21.78125
+
+ 17%|█▋        | 5/30 [03:24<14:05, 33.82s/trial, best loss: 10.4375] 20%|██        | 6/30 [03:24<13:23, 33.48s/trial, best loss: 10.4375]                                                                     Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.5261877948748365, 'SEQUENCE_BAG_ATTEMPTS': 43.0, 'TERM_LINK_MAX_MATCHED': 34.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 1.0}
+ 20%|██        | 6/30 [03:24<13:23, 33.48s/trial, best loss: 10.4375]                                                                     	Batch results: [50, 8.5, 7.5, 50]
+ 20%|██        | 6/30 [03:34<13:23, 33.48s/trial, best loss: 10.4375]                                                                     	Batch results: [7.5, 7.5, 7.5, 50]
+ 20%|██        | 6/30 [03:44<13:23, 33.48s/trial, best loss: 10.4375]                                                                     	Batch results: [7.5, 7.5, 50, 7.5]
+ 20%|██        | 6/30 [03:54<13:23, 33.48s/trial, best loss: 10.4375]                                                                     	Batch results: [7.5, 50, 50, 50]
+ 20%|██        | 6/30 [04:04<13:23, 33.48s/trial, best loss: 10.4375]                                                                     Hyperopt Iteration Loss: 26.15625
+
+ 20%|██        | 6/30 [04:04<13:23, 33.48s/trial, best loss: 10.4375] 23%|██▎       | 7/30 [04:04<13:36, 35.48s/trial, best loss: 10.4375]                                                                     Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.11373929027142511, 'SEQUENCE_BAG_ATTEMPTS': 3.0, 'TERM_LINK_MAX_MATCHED': 22.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 5.0}
+ 23%|██▎       | 7/30 [04:04<13:36, 35.48s/trial, best loss: 10.4375]                                                                     	Batch results: [7, 7.5, 7, 7.5]
+ 23%|██▎       | 7/30 [04:06<13:36, 35.48s/trial, best loss: 10.4375]                                                                     	Batch results: [7.5, 50, 7.5, 8.5]
+ 23%|██▎       | 7/30 [04:17<13:36, 35.48s/trial, best loss: 10.4375]                                                                     	Batch results: [8, 7.5, 7.5, 7.5]
+ 23%|██▎       | 7/30 [04:24<13:36, 35.48s/trial, best loss: 10.4375]                                                                     	Batch results: [7.5, 7, 7.5, 7.5]
+ 23%|██▎       | 7/30 [04:27<13:36, 35.48s/trial, best loss: 10.4375]                                                                     Hyperopt Iteration Loss: 10.15625
+
+ 23%|██▎       | 7/30 [04:27<13:36, 35.48s/trial, best loss: 10.4375] 27%|██▋       | 8/30 [04:27<11:39, 31.78s/trial, best loss: 10.15625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.1879708151175822, 'SEQUENCE_BAG_ATTEMPTS': 33.0, 'TERM_LINK_MAX_MATCHED': 34.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 1.0}
+ 27%|██▋       | 8/30 [04:27<11:39, 31.78s/trial, best loss: 10.15625]                                                                      	Batch results: [50, 50, 8, 50]
+ 27%|██▋       | 8/30 [04:37<11:39, 31.78s/trial, best loss: 10.15625]                                                                      	Batch results: [50, 50, 50, 50]
+ 27%|██▋       | 8/30 [04:47<11:39, 31.78s/trial, best loss: 10.15625]                                                                      	Batch results: [50, 50, 50, 50]
+ 27%|██▋       | 8/30 [04:57<11:39, 31.78s/trial, best loss: 10.15625]                                                                      	Batch results: [8, 50, 50, 50]
+ 27%|██▋       | 8/30 [05:07<11:39, 31.78s/trial, best loss: 10.15625]                                                                      Hyperopt Iteration Loss: 44.75
+
+ 27%|██▋       | 8/30 [05:07<11:39, 31.78s/trial, best loss: 10.15625] 30%|███       | 9/30 [05:07<12:01, 34.35s/trial, best loss: 10.15625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.1720283685859715, 'SEQUENCE_BAG_ATTEMPTS': 11.0, 'TERM_LINK_MAX_MATCHED': 12.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 6.0}
+ 30%|███       | 9/30 [05:07<12:01, 34.35s/trial, best loss: 10.15625]                                                                      	Batch results: [6.5, 7.5, 6.5, 6.5]
+ 30%|███       | 9/30 [05:10<12:01, 34.35s/trial, best loss: 10.15625]                                                                      	Batch results: [50, 8, 7, 8]
+ 30%|███       | 9/30 [05:20<12:01, 34.35s/trial, best loss: 10.15625]                                                                      	Batch results: [6.5, 8, 6.5, 6.5]
+ 30%|███       | 9/30 [05:23<12:01, 34.35s/trial, best loss: 10.15625]                                                                      	Batch results: [6.5, 6.5, 6.5, 7.5]
+ 30%|███       | 9/30 [05:26<12:01, 34.35s/trial, best loss: 10.15625]                                                                      Hyperopt Iteration Loss: 9.65625
+
+ 30%|███       | 9/30 [05:26<12:01, 34.35s/trial, best loss: 10.15625] 33%|███▎      | 10/30 [05:26<09:54, 29.72s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.3289780997222847, 'SEQUENCE_BAG_ATTEMPTS': 50.0, 'TERM_LINK_MAX_MATCHED': 39.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 4.0}
+ 33%|███▎      | 10/30 [05:26<09:54, 29.72s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 33%|███▎      | 10/30 [05:36<09:54, 29.72s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 33%|███▎      | 10/30 [05:46<09:54, 29.72s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 33%|███▎      | 10/30 [05:56<09:54, 29.72s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 33%|███▎      | 10/30 [06:07<09:54, 29.72s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 50
+
+ 33%|███▎      | 10/30 [06:07<09:54, 29.72s/trial, best loss: 9.65625] 37%|███▋      | 11/30 [06:07<10:24, 32.86s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.15785653823494616, 'SEQUENCE_BAG_ATTEMPTS': 44.0, 'TERM_LINK_MAX_MATCHED': 0.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 5.0}
+ 37%|███▋      | 11/30 [06:07<10:24, 32.86s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 37%|███▋      | 11/30 [06:17<10:24, 32.86s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 37%|███▋      | 11/30 [06:27<10:24, 32.86s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 37%|███▋      | 11/30 [06:37<10:24, 32.86s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 37%|███▋      | 11/30 [06:47<10:24, 32.86s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 50
+
+ 37%|███▋      | 11/30 [06:47<10:24, 32.86s/trial, best loss: 9.65625] 40%|████      | 12/30 [06:47<10:31, 35.08s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.4170226082991939, 'SEQUENCE_BAG_ATTEMPTS': 39.0, 'TERM_LINK_MAX_MATCHED': 19.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 2.0}
+ 40%|████      | 12/30 [06:47<10:31, 35.08s/trial, best loss: 9.65625]                                                                      	Batch results: [8.5, 8, 50, 50]
+ 40%|████      | 12/30 [06:57<10:31, 35.08s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 8.5]
+ 40%|████      | 12/30 [07:07<10:31, 35.08s/trial, best loss: 9.65625]                                                                      	Batch results: [8.5, 8.5, 50, 50]
+ 40%|████      | 12/30 [07:17<10:31, 35.08s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 8.5, 50]
+ 40%|████      | 12/30 [07:27<10:31, 35.08s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 34.40625
+
+ 40%|████      | 12/30 [07:27<10:31, 35.08s/trial, best loss: 9.65625] 43%|████▎     | 13/30 [07:27<10:22, 36.64s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.6672159602616536, 'SEQUENCE_BAG_ATTEMPTS': 20.0, 'TERM_LINK_MAX_MATCHED': 48.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 3.0}
+ 43%|████▎     | 13/30 [07:27<10:22, 36.64s/trial, best loss: 9.65625]                                                                      	Batch results: [6.5, 50, 50, 50]
+ 43%|████▎     | 13/30 [07:37<10:22, 36.64s/trial, best loss: 9.65625]                                                                      	Batch results: [7.5, 6.5, 50, 6.5]
+ 43%|████▎     | 13/30 [07:47<10:22, 36.64s/trial, best loss: 9.65625]                                                                      	Batch results: [7, 7.5, 50, 50]
+ 43%|████▎     | 13/30 [07:57<10:22, 36.64s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 6.5, 6.5, 50]
+ 43%|████▎     | 13/30 [08:07<10:22, 36.64s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 28.40625
+
+ 43%|████▎     | 13/30 [08:07<10:22, 36.64s/trial, best loss: 9.65625] 47%|████▋     | 14/30 [08:07<10:03, 37.70s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.558369942511951, 'SEQUENCE_BAG_ATTEMPTS': 10.0, 'TERM_LINK_MAX_MATCHED': 28.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 10.0}
+ 47%|████▋     | 14/30 [08:07<10:03, 37.70s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 47%|████▋     | 14/30 [08:17<10:03, 37.70s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 7.5]
+ 47%|████▋     | 14/30 [08:27<10:03, 37.70s/trial, best loss: 9.65625]                                                                      	Batch results: [6.5, 50, 50, 50]
+ 47%|████▋     | 14/30 [08:37<10:03, 37.70s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 7.5]
+ 47%|████▋     | 14/30 [08:47<10:03, 37.70s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 41.96875
+
+ 47%|████▋     | 14/30 [08:47<10:03, 37.70s/trial, best loss: 9.65625] 50%|█████     | 15/30 [08:47<09:36, 38.45s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.1970938095250527, 'SEQUENCE_BAG_ATTEMPTS': 30.0, 'TERM_LINK_MAX_MATCHED': 23.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 7.0}
+ 50%|█████     | 15/30 [08:47<09:36, 38.45s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 50, 8, 8]
+ 50%|█████     | 15/30 [08:58<09:36, 38.45s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 50, 8, 8]
+ 50%|█████     | 15/30 [09:08<09:36, 38.45s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 8.5, 50]
+ 50%|█████     | 15/30 [09:18<09:36, 38.45s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 50, 50]
+ 50%|█████     | 15/30 [09:28<09:36, 38.45s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 21.15625
+
+ 50%|█████     | 15/30 [09:28<09:36, 38.45s/trial, best loss: 9.65625] 53%|█████▎    | 16/30 [09:28<09:06, 39.03s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.7539039677262025, 'SEQUENCE_BAG_ATTEMPTS': 3.0, 'TERM_LINK_MAX_MATCHED': 29.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 11.0}
+ 53%|█████▎    | 16/30 [09:28<09:06, 39.03s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 7.5, 50, 7.5]
+ 53%|█████▎    | 16/30 [09:38<09:06, 39.03s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 8, 50]
+ 53%|█████▎    | 16/30 [09:48<09:06, 39.03s/trial, best loss: 9.65625]                                                                      	Batch results: [7.5, 7.5, 7.5, 7.5]
+ 53%|█████▎    | 16/30 [09:50<09:06, 39.03s/trial, best loss: 9.65625]                                                                      	Batch results: [7.5, 7.5, 50, 50]
+ 53%|█████▎    | 16/30 [10:01<09:06, 39.03s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 26.125
+
+ 53%|█████▎    | 16/30 [10:01<09:06, 39.03s/trial, best loss: 9.65625] 57%|█████▋    | 17/30 [10:01<08:02, 37.15s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.8233109351851858, 'SEQUENCE_BAG_ATTEMPTS': 9.0, 'TERM_LINK_MAX_MATCHED': 35.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 12.0}
+ 57%|█████▋    | 17/30 [10:01<08:02, 37.15s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 57%|█████▋    | 17/30 [10:11<08:02, 37.15s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 57%|█████▋    | 17/30 [10:21<08:02, 37.15s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 57%|█████▋    | 17/30 [10:31<08:02, 37.15s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 57%|█████▋    | 17/30 [10:41<08:02, 37.15s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 50
+
+ 57%|█████▋    | 17/30 [10:41<08:02, 37.15s/trial, best loss: 9.65625] 60%|██████    | 18/30 [10:41<07:37, 38.12s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.33861243472458213, 'SEQUENCE_BAG_ATTEMPTS': 34.0, 'TERM_LINK_MAX_MATCHED': 20.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 18.0}
+ 60%|██████    | 18/30 [10:41<07:37, 38.12s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 50, 8]
+ 60%|██████    | 18/30 [10:51<07:37, 38.12s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 7.5, 8]
+ 60%|██████    | 18/30 [10:53<07:37, 38.12s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 50, 8, 8]
+ 60%|██████    | 18/30 [11:04<07:37, 38.12s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 8, 8, 8]
+ 60%|██████    | 18/30 [11:14<07:37, 38.12s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 15.84375
+
+ 60%|██████    | 18/30 [11:14<07:37, 38.12s/trial, best loss: 9.65625] 63%|██████▎   | 19/30 [11:14<06:40, 36.45s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.5353531535366293, 'SEQUENCE_BAG_ATTEMPTS': 44.0, 'TERM_LINK_MAX_MATCHED': 1.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 18.0}
+ 63%|██████▎   | 19/30 [11:14<06:40, 36.45s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 63%|██████▎   | 19/30 [11:24<06:40, 36.45s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 50, 50, 50]
+ 63%|██████▎   | 19/30 [11:34<06:40, 36.45s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 63%|██████▎   | 19/30 [11:44<06:40, 36.45s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 63%|██████▎   | 19/30 [11:54<06:40, 36.45s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 47.375
+
+ 63%|██████▎   | 19/30 [11:54<06:40, 36.45s/trial, best loss: 9.65625] 67%|██████▋   | 20/30 [11:54<06:16, 37.62s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.11590796603480406, 'SEQUENCE_BAG_ATTEMPTS': 1.0, 'TERM_LINK_MAX_MATCHED': 7.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 8.0}
+ 67%|██████▋   | 20/30 [11:54<06:16, 37.62s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 67%|██████▋   | 20/30 [12:04<06:16, 37.62s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 7.5, 50]
+ 67%|██████▋   | 20/30 [12:14<06:16, 37.62s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 67%|██████▋   | 20/30 [12:24<06:16, 37.62s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 67%|██████▋   | 20/30 [12:34<06:16, 37.62s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 47.34375
+
+ 67%|██████▋   | 20/30 [12:34<06:16, 37.62s/trial, best loss: 9.65625] 70%|███████   | 21/30 [12:34<05:45, 38.42s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.12275638973884552, 'SEQUENCE_BAG_ATTEMPTS': 17.0, 'TERM_LINK_MAX_MATCHED': 9.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 7.0}
+ 70%|███████   | 21/30 [12:34<05:45, 38.42s/trial, best loss: 9.65625]                                                                      	Batch results: [7, 50, 6, 50]
+ 70%|███████   | 21/30 [12:44<05:45, 38.42s/trial, best loss: 9.65625]                                                                      	Batch results: [7, 7, 6, 6]
+ 70%|███████   | 21/30 [12:47<05:45, 38.42s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 6, 6, 50]
+ 70%|███████   | 21/30 [12:57<05:45, 38.42s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 7, 50, 50]
+ 70%|███████   | 21/30 [13:07<05:45, 38.42s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 25.5
+
+ 70%|███████   | 21/30 [13:07<05:45, 38.42s/trial, best loss: 9.65625] 73%|███████▎  | 22/30 [13:07<04:54, 36.76s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.26676484207081363, 'SEQUENCE_BAG_ATTEMPTS': 5.0, 'TERM_LINK_MAX_MATCHED': 7.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 6.0}
+ 73%|███████▎  | 22/30 [13:07<04:54, 36.76s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 7.5, 50]
+ 73%|███████▎  | 22/30 [13:17<04:54, 36.76s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 8, 50, 50]
+ 73%|███████▎  | 22/30 [13:27<04:54, 36.76s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 8, 50, 7.5]
+ 73%|███████▎  | 22/30 [13:37<04:54, 36.76s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 73%|███████▎  | 22/30 [13:47<04:54, 36.76s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 39.4375
+
+ 73%|███████▎  | 22/30 [13:47<04:54, 36.76s/trial, best loss: 9.65625] 77%|███████▋  | 23/30 [13:47<04:24, 37.80s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.41345460289103597, 'SEQUENCE_BAG_ATTEMPTS': 24.0, 'TERM_LINK_MAX_MATCHED': 13.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 8.0}
+ 77%|███████▋  | 23/30 [13:47<04:24, 37.80s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 7.5]
+ 77%|███████▋  | 23/30 [13:57<04:24, 37.80s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 50, 7.5, 7.5]
+ 77%|███████▋  | 23/30 [14:07<04:24, 37.80s/trial, best loss: 9.65625]                                                                      	Batch results: [7.5, 7.5, 50, 50]
+ 77%|███████▋  | 23/30 [14:17<04:24, 37.80s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 7.5, 50, 7.5]
+ 77%|███████▋  | 23/30 [14:28<04:24, 37.80s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 28.78125
+
+ 77%|███████▋  | 23/30 [14:28<04:24, 37.80s/trial, best loss: 9.65625] 80%|████████  | 24/30 [14:28<03:51, 38.54s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.6193487179243885, 'SEQUENCE_BAG_ATTEMPTS': 15.0, 'TERM_LINK_MAX_MATCHED': 11.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 14.0}
+ 80%|████████  | 24/30 [14:28<03:51, 38.54s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 8, 50]
+ 80%|████████  | 24/30 [14:38<03:51, 38.54s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 50, 8]
+ 80%|████████  | 24/30 [14:48<03:51, 38.54s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 8, 8]
+ 80%|████████  | 24/30 [14:50<03:51, 38.54s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 8, 8, 8]
+ 80%|████████  | 24/30 [15:00<03:51, 38.54s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 15.875
+
+ 80%|████████  | 24/30 [15:00<03:51, 38.54s/trial, best loss: 9.65625] 83%|████████▎ | 25/30 [15:00<03:03, 36.62s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.2494709214489333, 'SEQUENCE_BAG_ATTEMPTS': 6.0, 'TERM_LINK_MAX_MATCHED': 25.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 5.0}
+ 83%|████████▎ | 25/30 [15:00<03:03, 36.62s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 8, 8.5]
+ 83%|████████▎ | 25/30 [15:02<03:03, 36.62s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 8, 8, 8]
+ 83%|████████▎ | 25/30 [15:05<03:03, 36.62s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 8, 8, 8]
+ 83%|████████▎ | 25/30 [15:15<03:03, 36.62s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 7, 8, 8]
+ 83%|████████▎ | 25/30 [15:17<03:03, 36.62s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 10.59375
+
+ 83%|████████▎ | 25/30 [15:17<03:03, 36.62s/trial, best loss: 9.65625] 87%|████████▋ | 26/30 [15:17<02:03, 30.85s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.10732890015500474, 'SEQUENCE_BAG_ATTEMPTS': 0.0, 'TERM_LINK_MAX_MATCHED': 24.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 3.0}
+ 87%|████████▋ | 26/30 [15:17<02:03, 30.85s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 7.5, 50, 50]
+ 87%|████████▋ | 26/30 [15:27<02:03, 30.85s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 8, 50]
+ 87%|████████▋ | 26/30 [15:37<02:03, 30.85s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 87%|████████▋ | 26/30 [15:47<02:03, 30.85s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 7, 50, 50]
+ 87%|████████▋ | 26/30 [15:57<02:03, 30.85s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 42.03125
+
+ 87%|████████▋ | 26/30 [15:57<02:03, 30.85s/trial, best loss: 9.65625] 90%|█████████ | 27/30 [15:57<01:40, 33.66s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.3709267185696741, 'SEQUENCE_BAG_ATTEMPTS': 22.0, 'TERM_LINK_MAX_MATCHED': 6.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 8.0}
+ 90%|█████████ | 27/30 [15:57<01:40, 33.66s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 90%|█████████ | 27/30 [16:07<01:40, 33.66s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 90%|█████████ | 27/30 [16:17<01:40, 33.66s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 8]
+ 90%|█████████ | 27/30 [16:28<01:40, 33.66s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 7, 50]
+ 90%|█████████ | 27/30 [16:38<01:40, 33.66s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 44.6875
+
+ 90%|█████████ | 27/30 [16:38<01:40, 33.66s/trial, best loss: 9.65625] 93%|█████████▎| 28/30 [16:38<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.10411843337675819, 'SEQUENCE_BAG_ATTEMPTS': 27.0, 'TERM_LINK_MAX_MATCHED': 17.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 9.0}
+ 93%|█████████▎| 28/30 [16:38<01:11, 35.64s/trial, best loss: 9.65625]                                                                      	Batch results: [7, 8, 8, 7]
+ 93%|█████████▎| 28/30 [16:46<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Statement found in:
+OUT: <<$1 --> [heated]> =/> <$1 --> [melted]>>. %1.00;0.90% {610 : (-4896788094242925448,2)} 
+
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Parent 1:
+OUT: <<$1 --> [heated]> =/> <$1 --> [melted]>>. %1.00;0.90% {610 : (-4896788094242925448,2)} <toothbrush --> (/,made_of,_,plastic)>. %1.00;0.90% {611 : (-4896788094242925448,0)} 
+
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Parent 2:
+DEBUG: Parent Belief	null
+
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Unexpected parent string
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Statement found in:
+OUT: <<$1 --> [heated]> =/> <$1 --> [melted]>>. %1.00;0.90% {610 : (-4896788094242925448,2)} 
+
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Parent 1:
+OUT: <<$1 --> [heated]> =/> <$1 --> [melted]>>. %1.00;0.90% {610 : (-4896788094242925448,2)} <toothbrush --> (/,made_of,_,plastic)>. %1.00;0.90% {611 : (-4896788094242925448,0)} 
+
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Parent 2:
+DEBUG: Parent Belief	null
+
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Unexpected parent string
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 8, 8, 8]
+ 93%|█████████▎| 28/30 [16:49<01:11, 35.64s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 7, 8, 50]
+ 93%|█████████▎| 28/30 [16:59<01:11, 35.64s/trial, best loss: 9.65625]                                                                      	Batch results: [8, 50, 8, 50]
+ 93%|█████████▎| 28/30 [17:09<01:11, 35.64s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 18.3125
+
+ 93%|█████████▎| 28/30 [17:09<01:11, 35.64s/trial, best loss: 9.65625] 97%|█████████▋| 29/30 [17:09<00:34, 34.29s/trial, best loss: 9.65625]                                                                      Iteration using params:
+{'DERIVATION_PRIORITY_LEAK': 0.2837737378242376, 'SEQUENCE_BAG_ATTEMPTS': 14.0, 'TERM_LINK_MAX_MATCHED': 4.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 13.0}
+ 97%|█████████▋| 29/30 [17:09<00:34, 34.29s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 7.5]
+ 97%|█████████▋| 29/30 [17:19<00:34, 34.29s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 50, 50]
+ 97%|█████████▋| 29/30 [17:29<00:34, 34.29s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 8, 7.5]
+ 97%|█████████▋| 29/30 [17:39<00:34, 34.29s/trial, best loss: 9.65625]                                                                      	Batch results: [50, 50, 7.5, 8]
+ 97%|█████████▋| 29/30 [17:49<00:34, 34.29s/trial, best loss: 9.65625]                                                                      Hyperopt Iteration Loss: 36.78125
+
+ 97%|█████████▋| 29/30 [17:49<00:34, 34.29s/trial, best loss: 9.65625]100%|██████████| 30/30 [17:49<00:00, 36.08s/trial, best loss: 9.65625]100%|██████████| 30/30 [17:49<00:00, 35.65s/trial, best loss: 9.65625]
+Final Params:
+{'DERIVATION_PRIORITY_LEAK': 0.1720283685859715, 'SEQUENCE_BAG_ATTEMPTS': 11.0, 'TERM_LINK_MAX_MATCHED': 12.0, 'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': 6.0}
