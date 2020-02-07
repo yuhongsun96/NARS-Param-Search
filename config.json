@@ -1,0 +1,10 @@
+{
+  "files": [
+    "toothbrush.nal"
+  ],
+
+  "params": [
+    ["DERIVATION_PRIORITY_LEAK", "0.1", "0.6" ,"float"],
+    ["TERM_LINK_MAX-MATCHED", "1", "50", "int"]
+  ]
+}

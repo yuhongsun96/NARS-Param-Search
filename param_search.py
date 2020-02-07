@@ -1,30 +1,33 @@
 import subprocess
 import re
+import os
 import time
+import signal
 import multiprocessing as mp
 from statistics import mean 
 from hyperopt import hp, fmin, tpe, space_eval
 
+# Nars input file
+nars_file = "toothbrush.nal"
 # Turn on debug, only runs 1 hyperopt iteration with a single trial
 debug = False
 # Number of iterations of hyperopt
-num_evals = 10
+num_evals = 40
 # Timeout limit in seconds for NARS to conclude all target statements
 timeout = 10
 # Failure penalty in case NARS fails to conclude all target statements
-penalty_failed = 50
+penalty_failed = 100
 # Number of trials per hyperopt iteration (since NARS is nondeterministic)
-trials = 8 # Optimally should be multiple of cores (see below)
+trials = 16 # Optimally should be multiple of cores (see below)
 # Cores available for parallelizing
 cores = 4
-# Goals for NARS to deduce
-targets = [ "(^lighter,{SELF},toothbrush)! %1.00;0.39%", \
-            "(^reshape,{SELF},toothbrush)! %1.00;0.26%"]
-#Objective, choose "chain_length" for minimizing inference chain length or "cycles" for minimizing number of cycles until target statements are derived
+# Objective, choose "chain_length" for minimizing inference chain length or "cycles" for minimizing number of cycles until target statements are derived
 optimization_objective = "chain_length"
-
+# Batch timeout, in case multiprocess pool hangs
+batch_TO = 60
 
 # Setup
+target_stamp = "\'\'outputMustContain(\'"
 if debug: num_evals = 1
 debug_str_1 = "DEBUG: Parent Belief\t"
 debug_str_2 = "DEBUG: Parent Task\t"
@@ -32,7 +35,17 @@ regex_null = re.compile(r'\s?null\s?')
 if penalty_failed < 10000 and optimization_objective == "cycles":
     print("Consider using a higher penalty_failed (at least 10000) for optimization_objective = cycles")
     time.sleep(2)
+targets = []
+print("Using NARS input file: " + nars_file + "\n")
+with open(nars_file, "r") as narsese:
+    for line in narsese:
+        if target_stamp in line:
+            targets.append(line.split(target_stamp)[1][:-3])
 
+print("Found Target Statements: ")
+[print("\t" + target) for target in targets]
+print("\n")
+time.sleep(1)
 
 # Get the longest path through ancestry tree of statement
 def longest_ancestry(statement, depth, text):
@@ -96,7 +109,7 @@ def objective(args):
     # Execute NARS in shell mode and capture output
     process = subprocess.Popen(process_cmd, stdout=subprocess.PIPE)
     fd = process.stdout
-    
+
     # Continue looking for all target outputs until all are found or 10 second timeout is reached
     lighter_found = reshape_found = False
     start_time = time.time()
@@ -112,7 +125,7 @@ def objective(args):
                 found_targets.append(target)
                 full_lines.append(newline)
                 if debug: print("Found target line: " + newline)
-    
+
     # Get the debug parent statements following the last matched target
     content.append(fd.readline().decode('utf-8'))
     content.append(fd.readline().decode('utf-8'))
@@ -138,26 +151,45 @@ def objective(args):
             #Follow task not thoroughly tested
             return mean([int(re.findall('% {\d+', target)[0][3:]) for target in full_lines])
             
+# In case a thread dies
+def signal_handler(signum, frame):
+    raise Exception("\tBatch timed out, retrying")
 
 # Running multiple trials of objective function in parallel and taking average
 def parallelize_objective(args):
     print("Iteration using params:\n" + str(args))
     losses = []
     for it in range(round(trials / cores)):
-        with mp.Pool(cores) as p:
-            batch = p.map(objective, [args] * cores)
-            print("\tBatch results: " + str(batch))
-        losses += batch
+        success = False
+        while not success:
+            # Each batch is given a maximum time before it is assumed a worker hung
+            signal.alarm(batch_TO)
+            try:
+                with mp.Pool(cores) as p:
+                    batch = p.map(objective, [args] * cores)
+                    print("\tBatch results: " + str(batch))
+                losses += batch
+                success = True
+            # If not successful, print a message and try again
+            except Exception as e:
+                    print(str(e))
+
     loss = mean(losses)
     print("Hyperopt Iteration Loss: " + str(loss) + "\n")
     return loss
 
+# =====================
+# Execution begins here
+# =====================
+
+# In case subprocess pool hangs
+signal.signal(signal.SIGALRM, signal_handler)
 
 # Search space consisting of suggested top 4 parameters
-space = {'DERIVATION_PRIORITY_LEAK': hp.uniform('DERIVATION_PRIORITY_LEAK', 0, 0.9), 
-        'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': hp.quniform('VARIABLE_INTRODUCTION_COMBINATIONS_MAX', 5, 20, 1),
-        'SEQUENCE_BAG_ATTEMPTS': hp.quniform('SEQUENCE_BAG_ATTEMPTS', 5, 50, 1),
-        'TERM_LINK_MAX_MATCHED': hp.quniform('TERM_LINK_MAX_MATCHED', 5, 50, 1)}
+space = {'DERIVATION_PRIORITY_LEAK': hp.uniform('DERIVATION_PRIORITY_LEAK', 0.1, 0.6),
+        'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': hp.quniform('VARIABLE_INTRODUCTION_COMBINATIONS_MAX', 0, 20, 1),
+        'SEQUENCE_BAG_ATTEMPTS': hp.quniform('SEQUENCE_BAG_ATTEMPTS', 0, 50, 1),
+        'TERM_LINK_MAX_MATCHED': hp.quniform('TERM_LINK_MAX_MATCHED', 1, 50, 1)}
 
 # Execute hyperopt param search
 if debug:
