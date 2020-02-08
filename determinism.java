@@ -25,10 +25,10 @@ class determinism{
             final Nar nar = new Nar();
 	    
 	    // Set Hyperparameters
-	    nar.narParameters.DERIVATION_PRIORITY_LEAK = 0.1f; //0.4f default
-            nar.narParameters.VARIABLE_INTRODUCTION_COMBINATIONS_MAX = 8; //8 default
-            nar.narParameters.SEQUENCE_BAG_ATTEMPTS = 10; //10 default
-            nar.narParameters.TERM_LINK_MAX_MATCHED = 50; //10 default
+	    nar.narParameters.DERIVATION_PRIORITY_LEAK = 0.4f; // 0.4f default
+            nar.narParameters.VARIABLE_INTRODUCTION_COMBINATIONS_MAX = 8; // 8 default
+            nar.narParameters.SEQUENCE_BAG_ATTEMPTS = 10; // 10 default
+            nar.narParameters.TERM_LINK_MAX_MATCHED = 10; // 10 default
 
             // Pass in toothbrush.nal file
             String toothbrushfile = new String(Files.readAllBytes(Paths.get("toothbrush.nal")));
