@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 class determinism{
     public static void main(String args[]) throws Exception{
         int num_runs = 10;
+	int nars_cycle_cap = 100000;
 
 	// Target statements of toothbrush.nal
         String target1 = "(^lighter,{SELF},toothbrush)! %1.00;0.39%"; 
@@ -18,7 +19,7 @@ class determinism{
 
 	int hits = 0;
         for(int i = 0; i < num_runs; i++){
-            System.out.println("Iteration: " + Integer.toString(i));
+            System.out.println("\nIteration: " + Integer.toString(i));
 
             // Initialize NARS
             final Nar nar = new Nar();
@@ -37,17 +38,17 @@ class determinism{
             ByteArrayOutputStream nar_stream = new ByteArrayOutputStream();
             new TextOutputHandler(nar, new PrintStream(nar_stream), 0.0f);
 
-            // Run NARS for 300,000 Cycles
-            nar.cycles(100000);
+            // Run NARS for some set number of Cycles
+            nar.cycles(nars_cycle_cap);
 
             String nar_out = nar_stream.toString();
 
             // Check if target statements were generated
 	    if(nar_out.contains(target1)){
-		System.out.println("Statement 1 found");
+		System.out.println("Statement \"" + target1 + "\" found");
 	    }
 	    if(nar_out.contains(target2)){
-		System.out.println("Statement 2 found");
+		System.out.println("Statement \"" + target2 + "\" found");
             }
 	    if(nar_out.contains(target1) && nar_out.contains(target2)){
 		hits += 1;
