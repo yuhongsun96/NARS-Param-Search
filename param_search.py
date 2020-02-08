@@ -18,7 +18,7 @@ timeout = 10
 # Failure penalty in case NARS fails to conclude all target statements
 penalty_failed = 100
 # Number of trials per hyperopt iteration (since NARS is nondeterministic)
-trials = 16 # Optimally should be multiple of cores (see below)
+trials = 40 # Optimally should be multiple of cores (see below)
 # Cores available for parallelizing
 cores = 4
 # Objective, choose "chain_length" for minimizing inference chain length or "cycles" for minimizing number of cycles until target statements are derived
@@ -186,10 +186,10 @@ def parallelize_objective(args):
 signal.signal(signal.SIGALRM, signal_handler)
 
 # Search space consisting of suggested top 4 parameters
-space = {'DERIVATION_PRIORITY_LEAK': hp.uniform('DERIVATION_PRIORITY_LEAK', 0.1, 0.6),
-        'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': hp.quniform('VARIABLE_INTRODUCTION_COMBINATIONS_MAX', 0, 20, 1),
-        'SEQUENCE_BAG_ATTEMPTS': hp.quniform('SEQUENCE_BAG_ATTEMPTS', 0, 50, 1),
-        'TERM_LINK_MAX_MATCHED': hp.quniform('TERM_LINK_MAX_MATCHED', 1, 50, 1)}
+space = {'DERIVATION_PRIORITY_LEAK': hp.uniform('DERIVATION_PRIORITY_LEAK', 0.1, 0.3),
+        'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': hp.quniform('VARIABLE_INTRODUCTION_COMBINATIONS_MAX', 0, 0, 1),
+        'SEQUENCE_BAG_ATTEMPTS': hp.quniform('SEQUENCE_BAG_ATTEMPTS', 0, 0, 1),
+        'TERM_LINK_MAX_MATCHED': hp.quniform('TERM_LINK_MAX_MATCHED', 30, 50, 1)}
 
 # Execute hyperopt param search
 if debug:
