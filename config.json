@@ -1,10 +1,20 @@
 {
-  "files": [
+  "NARS input files": [
     "toothbrush.nal"
   ],
 
-  "params": [
-    ["DERIVATION_PRIORITY_LEAK", "0.1", "0.6" ,"float"],
-    ["TERM_LINK_MAX-MATCHED", "1", "50", "int"]
-  ]
+  "NARS parameters": [
+    ["DERIVATION_PRIORITY_LEAK", 0.1, 0.6],
+    ["TERM_LINK_MAX-MATCHED", 1, 50]
+  ],
+
+  "debug": "False",
+  "optimization objective": "chain_length",
+  "failure penalty": 100,
+  "hyperopt iterations": 40,
+  "NARS runs per iteration": 20,
+  "cpu cores": 4,
+  "NARS timeout": 10,
+  "batch timeout": 60,
+  "require exact truth value": "False"
 }

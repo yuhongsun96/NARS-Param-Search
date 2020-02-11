@@ -13,11 +13,9 @@ class determinism{
     int num_runs = 100;
     int nars_cycle_cap = 10000;
 
-	// Target statements of toothbrush.nal
+    // Target statements of toothbrush.nal
     String target1 = "(^lighter,{SELF},toothbrush)!"; 
-    //String target1 = "(^lighter,{SELF},toothbrush)! %1.00;0.39%"; 
     String target2 = "(^reshape,{SELF},toothbrush)!";
-    //String target2 = "(^reshape,{SELF},toothbrush)! %1.00;0.26%";
 
 	int hits = 0;
     for(int i = 0; i < num_runs; i++){
