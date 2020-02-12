@@ -5,6 +5,8 @@
 
   "NARS parameters": [
     ["DERIVATION_PRIORITY_LEAK", 0.1, 0.6],
+    ["VARIABLE_INTRODUCTION_COMBINATIONS_MAX", 0, 0],
+    ["SEQUENCE_BAG_ATTEMPTS", 0, 0],
     ["TERM_LINK_MAX-MATCHED", 1, 50]
   ],
 
