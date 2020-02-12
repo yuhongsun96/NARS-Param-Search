@@ -1,3 +1,12 @@
+""" NARS benchmarking using hyperopt
+
+This module uses hyperopt to explore a user defined hyperparameter search space for NARS
+Benchmarking is done by performing multiple runs of NARS and taking the average performance defined by the optimization objective
+All configurations are done through config.json
+For help and details, refer to README.md
+
+"""
+
 import subprocess
 import re
 import os
@@ -9,14 +18,14 @@ from statistics import mean
 from hyperopt import hp, fmin, tpe, space_eval
 import objectives
 
-# Run initial setup when this file is imported
+
+# Read config.json for initial setup, for details on the fields see README.md
 with open('config.json', 'r') as config_json:
     config = json.load(config_json)
-
 nars_files = config['NARS input files']
 params = config['NARS parameters']
 debug = (config['debug'] == "True" or config['debug'] == "True")
-objective_func = config['optimization objective']
+objective = config['optimization objective']
 failure_penalty = config['failure penalty']
 hyperopt_iters = config['hyperopt iterations']
 runs_per_iter = config['NARS runs per iteration']
@@ -25,16 +34,17 @@ NARS_TO = config['NARS timeout']
 batch_TO = config['batch timeout']
 exact_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true" )
 
-if failure_penalty < 10000 and objective_func == "cycles":
-    print("Consider using a higher failure penalty (at least 10000) for optimization objective = cycles")
-    time.sleep(2)
 
-
-# Extract the target statements given an input Narsese file
 def extract_targets(nars_file):
-    if debug: print("\tProcessing NARS input file: " + nars_file + "\n")
+    """ Extract the target statements that NARS is suppose to generate given the input file
+    Args:
+        nars_file: String for the file path of the Narsese file to benchmark
+
+    Returns:
+        List of strings which should appear in the NARS output when it digests nars_file
+    """
     targets = []
-    # Target statements expected to begin with the following pattern in the Narsese file.
+    # Target statements are expected to defined in Narsese file starting with the following pattern
     target_stamp = "\'\'outputMustContain(\'"
     with open(nars_file, "r") as narsese:
         for line in narsese:
@@ -50,22 +60,45 @@ def extract_targets(nars_file):
 
 
 def get_space():
+    """ Create a parameter space taken by hyperopt
+    The dimensions of the space is entirely defined by config.json and sampling is later provided by hyperopt
+
+    Returns:
+        dictionary with the keys as the named dimensions and values as hyperopt hp pointers
+    """
     space = {}
-    # All params expected to follow format: [name, lowerbound, upperbound] or [name, True/False] 
     for param in params:
+        # 3 value param expected to follow format: [name, lowerbound, upperbound] 
         if type(param[1]) == float or type(param[2]) == float:
             space[param[0]] = hp.uniform(param[0], param[1], param[2])
         elif type(param[1]) == int or type(param[2]) == int:
             space[param[0]] = hp.quniform(param[0], param[1], param[2], 1)
+        # 2 value param expected to follow format: [name, True/False] 
         elif len(param) == 2:
             space[param[0]] = hp.quniform(param[0], 0, 1, 1)
     return space
 
 
-def objective(args_file_tuple):
+def run_nars(args_file_tuple):
+    """ Run a single instance of NARS as a separate java subprocess and calls objective function
+    Runs NARS until all target statements are derived by the reasoner or a user specified timeout is reached
+    Calls user specified objective function if all target statements are successfully derived.
+
+    Args:
+        args_file_tuple: a list of two arguments combined for multiprocessing pool.map
+                         unpacks to 1.) list of parameters for the NARS java wrapper and 2.) a Narsese file path
+
+    Return:
+        A loss value for this particular run of NARS
+    """
+    # Expand the arguments to parameters for NARS and a Narsese file path
     args = args_file_tuple[0]
     nars_file = args_file_tuple[1]
+    
+    # Extract target statements
     targets = extract_targets(nars_file)
+
+    # Build up a command string to run as a separate java NARS process
     process_cmd = ['java', '-cp', '.:opennars-3.0.4-SNAPSHOT.jar', 'run_nars', nars_file]
     for key in args:
         flag = '-' + str(key)
@@ -99,7 +132,7 @@ def objective(args_file_tuple):
     # Kill the running NARS as it's no longer useful
     process.terminate()
     
-    # Return penalty if not all target statements were output by NARS
+    # Return penalty from config.json if not all target statements were output by NARS
     if len(found_targets) < len(targets):
         if debug: 
             print("NARS failed to generate all require target statements")
@@ -109,22 +142,26 @@ def objective(args_file_tuple):
                     print(target)
         return failure_penalty
     
-    # Trim off truth value if specified in config.json
-    if not exact_TV:
-        found_targets = [target.split(" %")[0] for target in found_targets]
-
-    # Select one of the objectives defined in objectives.py
-    if objective_func == "chain_length":
-        return mean([objectives.chain_length(target, content) for target in found_targets])
-    elif objective_func == "num_cycles":
-        return mean([objectives.num_cycles(target, content) for target in found_targets])
+    # Select one of the objective functions defined in objectives.py
+    objective_func = getattr(objectives, objective, None)
+    if objective_func:
+        return mean([objective_func(target, content) for target in found_targets])
     else:
-        print("objective function is not found, please select valid objective in config.json")
+        print("\n\n\n\nFatal:objective function is not found, please select valid objective in config.json\nExiting")
+        exit()
     return failure_penalty
 
 
-# In case a thread dies
 def signal_handler(signum, frame):
+    """ Handles edge case where a spawned process hangs
+    Occurs very rarely when spawning parallel subprocesses with multiprocess pool
+    Caller simply abandons the batch and retries
+
+    Args:
+        signum: signal number
+        frame: current stack frame
+    """
+    # No additional handling required except a message as caller simply retries batch
     raise Exception("\t\tBatch timed out, retrying")
 
 
@@ -140,7 +177,7 @@ def parallelized_objective(args):
                 signal.alarm(batch_TO)
                 try:
                     with mp.Pool(cores) as p:
-                        batch = p.map(objective, [(args, nars_file)] * cores)
+                        batch = p.map(run_nars, [(args, nars_file)] * cores)
                         print("\t\tBatch results: " + str(batch))
                     losses += batch
                     success = True
@@ -149,7 +186,7 @@ def parallelized_objective(args):
                         print(str(e))
 
     loss = mean(losses)
-    print("Hyperopt Iteration Loss: " + str(loss) + "\n\n")
+    print("\nHyperopt Iteration Loss: " + str(loss) + "\n\n")
     return loss
 
 
