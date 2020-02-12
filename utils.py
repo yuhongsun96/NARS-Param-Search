@@ -16,7 +16,7 @@ with open('config.json', 'r') as config_json:
 nars_files = config['NARS input files']
 params = config['NARS parameters']
 debug = (config['debug'] == "True" or config['debug'] == "True")
-objective = config['optimization objective']
+objective_func = config['optimization objective']
 failure_penalty = config['failure penalty']
 hyperopt_iters = config['hyperopt iterations']
 runs_per_iter = config['NARS runs per iteration']
@@ -25,7 +25,7 @@ NARS_TO = config['NARS timeout']
 batch_TO = config['batch timeout']
 exact_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true" )
 
-if failure_penalty < 10000 and objective == "cycles":
+if failure_penalty < 10000 and objective_func == "cycles":
     print("Consider using a higher failure penalty (at least 10000) for optimization objective = cycles")
     time.sleep(2)
 
@@ -66,7 +66,7 @@ def objective(args_file_tuple):
     args = args_file_tuple[0]
     nars_file = args_file_tuple[1]
     targets = extract_targets(nars_file)
-    process_cmd = ['java', '-cp', '.:opennars-3.0.4-SNAPSHOT.jar', 'run_nars', '-file', nars_file]
+    process_cmd = ['java', '-cp', '.:opennars-3.0.4-SNAPSHOT.jar', 'run_nars', nars_file]
     for key in args:
         flag = '-' + str(key)
         value = str(args[key])
@@ -77,20 +77,19 @@ def objective(args_file_tuple):
     if debug: print("\tExecuting: " + str(process_cmd))
     
     # Execute NARS in shell mode and capture output
-    process = subprocess.Popen(process_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process = subprocess.Popen(process_cmd, stdout=subprocess.PIPE)
     fd = process.stdout
-    if debug: err_file = process.stderr
 
     # Run NARS until all target statements are found or the timeout is reached
-    found_targets = {}
+    found_targets = []
     content = []
     stop_time = time.time() + NARS_TO
     while time.time() < stop_time and len(found_targets) < len(targets):
         newline = fd.readline().decode('utf-8')
         content.append(newline)
         for target in targets:
-            if (target in newline) and ("ECHO:" not in newline) and ("IN:" not in newline):
-                found_targets.add(target)
+            if (target in newline) and (target not in found_targets) and ("ECHO:" not in newline) and ("IN:" not in newline):
+                found_targets.append(target)
                 if debug: print("Found target line: " + newline)
 
     # Read a few more lines for context following last target (such as DEBUG: outputs)
@@ -115,9 +114,9 @@ def objective(args_file_tuple):
         found_targets = [target.split(" %")[0] for target in found_targets]
 
     # Select one of the objectives defined in objectives.py
-    if objective == "chain_length":
+    if objective_func == "chain_length":
         return mean([objectives.chain_length(target, content) for target in found_targets])
-    elif objective == "num_cycles":
+    elif objective_func == "num_cycles":
         return mean([objectives.num_cycles(target, content) for target in found_targets])
     else:
         print("objective function is not found, please select valid objective in config.json")
@@ -130,10 +129,10 @@ def signal_handler(signum, frame):
 
 
 def parallelized_objective(args):
-    print("Iteration using parameters:\n" + str(args) + "\n")
+    print("Iteration using parameters:\n" + str(args))
     losses = []
     for nars_file in nars_files:
-        print("\tBenchmarking file: " + nars_file)
+        print("\n\tBenchmarking file: " + nars_file)
         for it in range(round(runs_per_iter / cores)):
             success = False
             while not success:
@@ -141,7 +140,6 @@ def parallelized_objective(args):
                 signal.alarm(batch_TO)
                 try:
                     with mp.Pool(cores) as p:
-                        time.sleep(65)
                         batch = p.map(objective, [(args, nars_file)] * cores)
                         print("\t\tBatch results: " + str(batch))
                     losses += batch
