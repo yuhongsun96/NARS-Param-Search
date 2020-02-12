@@ -37,9 +37,9 @@ exact_TV = (config['require exact truth value'] == "True" or config['require exa
 
 def extract_targets(nars_file):
     """ Extract the target statements that NARS is suppose to generate given the input file
+
     Args:
         nars_file: String for the file path of the Narsese file to benchmark
-
     Returns:
         List of strings which should appear in the NARS output when it digests nars_file
     """
@@ -87,7 +87,6 @@ def run_nars(args_file_tuple):
     Args:
         args_file_tuple: a list of two arguments combined for multiprocessing pool.map
                          unpacks to 1.) list of parameters for the NARS java wrapper and 2.) a Narsese file path
-
     Return:
         A loss value for this particular run of NARS
     """
@@ -99,7 +98,7 @@ def run_nars(args_file_tuple):
     targets = extract_targets(nars_file)
 
     # Build up a command string to run as a separate java NARS process
-    process_cmd = ['java', '-cp', '.:opennars-3.0.4-SNAPSHOT.jar', 'run_nars', nars_file]
+    process_cmd = ['java', '-cp', '.:*', 'run_nars', nars_file]
     for key in args:
         flag = '-' + str(key)
         value = str(args[key])
@@ -166,10 +165,17 @@ def signal_handler(signum, frame):
 
 
 def parallelized_objective(args):
+    """ Uses subprocess to create parallel instances of NARS and run objective functions in parallel
+    
+    Args:
+        args: hyperopt generated values for each named dimension to be translated into NARS parameters 
+    """
     print("Iteration using parameters:\n" + str(args))
     losses = []
+    # Handle each Narsese file in sequence
     for nars_file in nars_files:
         print("\n\tBenchmarking file: " + nars_file)
+        # Created batches for each file
         for it in range(round(runs_per_iter / cores)):
             success = False
             while not success:
@@ -185,6 +191,7 @@ def parallelized_objective(args):
                 except Exception as e:
                         print(str(e))
 
+    # Average the losses across all runs of NARS
     loss = mean(losses)
     print("\nHyperopt Iteration Loss: " + str(loss) + "\n\n")
     return loss
@@ -197,8 +204,9 @@ def parallelized_objective(args):
 # In case subprocess pool hangs
 signal.signal(signal.SIGALRM, signal_handler)
 
+# Define a search space based on configurations in config.json
 hyperopt_search_space = get_space()
 
+# Run hyperopt and keep the best parameters
 best = fmin(parallelized_objective, hyperopt_search_space, algo=tpe.suggest, max_evals=hyperopt_iters)
-
 print(best)
