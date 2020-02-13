@@ -6,7 +6,7 @@ Provide a hyperparameter tuning suite for the Non-Axiomatic Reasoning System for
 
 How to Use:
 -----------
-1. The NARS jar is required to be in this directory. It can be built from the opennars git page:\
+1. Place a NARS jar at the base of the repo. It can be built from the opennars git page:\
 https://github.com/opennars/opennars
 
 2. Recompile the java NARS wrapper with javac -cp .:* run_nars.java
