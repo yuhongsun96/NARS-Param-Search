@@ -182,7 +182,7 @@ def parallelized_objective(args):
     losses = []
     # Handle each Narsese file in sequence
     for nars_file in nars_files:
-        print("\n\tBenchmarking file: " + nars_file)
+        print("\n\tBenchmarking file: " + nars_file.split("/")[-1])
         # Created batches for each file
         for it in range(round(runs_per_iter / threads)):
             success = False
