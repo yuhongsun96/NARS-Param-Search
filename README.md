@@ -19,8 +19,8 @@ Configuring Runs:
 -----------------
 Configurations are done through config.json
 - NARS input files: A list of Narsese files to pass to NARS to reason about
-- NARS parameters: System parameters for NARS. Should take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for availble NARS parameter fields.
-- optimization objective: name of one of the functions in objectives.py. Default available ones include "chain_length" (to minimize the length of the longest inference chain for a target statement), "num_cycles" (to minimize number of NARS cycles before deducing target statement), and "real_time" (to minimize the time taken before NARS is able to conclude the target statement).
+- NARS parameters: System parameters for NARS. \Should take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for availble NARS parameter fields.
+- optimization objective: Benchmarking criteria for a NARS run. \Must be the name of one of the functions in objectives.py. Default available functions include: \t"chain_length" (to minimize the length of the longest inference chain for a target statement), "num_cycles" (to minimize number of NARS cycles before deducing target statement), and "real_time" (to minimize the time taken before NARS is able to conclude the target statement).
 - debug: Very verbose run of only a single iteration of hyperopt and a single run of NARS. "True" to turn on.
 
 
