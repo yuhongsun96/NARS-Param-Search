@@ -27,16 +27,16 @@ params = config['NARS parameters']
 debug = (config['debug'] == "True" or config['debug'] == "True")
 objective = config['optimization objective']
 failure_penalty = config['failure penalty']
-hyperopt_iters = config['hyperopt iterations']
+hyperopt_iters = config['Hyperopt iterations']
 runs_per_iter = config['NARS runs per iteration']
-cores = config['cpu cores']
+threads = config['cpu threads']
 NARS_TO = config['NARS timeout']
 batch_TO = config['batch timeout']
 exact_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true" )
 
 # Single run if running in debug mode
 if debug:
-    hyperopt_iters = runs_per_iter = cores = 1
+    hyperopt_iters = runs_per_iter = threads = 1
     nars_files = [nars_files[0]]
 
 def extract_targets(nars_file):
@@ -184,14 +184,14 @@ def parallelized_objective(args):
     for nars_file in nars_files:
         print("\n\tBenchmarking file: " + nars_file)
         # Created batches for each file
-        for it in range(round(runs_per_iter / cores)):
+        for it in range(round(runs_per_iter / threads)):
             success = False
             while not success:
                 # Each batch is given a maximum time before it is assumed a worker hung
                 signal.alarm(batch_TO)
                 try:
-                    with mp.Pool(cores) as p:
-                        batch = p.map(run_nars, [(args, nars_file)] * cores)
+                    with mp.Pool(threads) as p:
+                        batch = p.map(run_nars, [(args, nars_file)] * threads)
                         print("\t\tBatch results: " + str(batch))
                     losses += batch
                     success = True
