@@ -28,7 +28,7 @@ Configurations are done through config.json
 - NARS runs per iteration: Number of trials of NARS to run and average for a single iteration of Hyperopt (1 set of parameters).
 - cpu threads: Number of cpu threads available for parallelizing runs of NARS.
 - NARS timeout: Time in seconds before it is assumed NARS will not be able to deduce the target statements.
-- require exact truth value: Whether a derived NARS statement can match a target even if the truth values are not an exact match.
+- require exact truth value: Whether a derived NARS statement can match a target even if the truth values are not an exact match. "True" to require exact match.
 - batch timeout: Time in seconds before it is assumed one of the subprocesses hung and a batch needs to be run again.
 - debug: Very verbose run of only a single iteration of hyperopt and a single run of NARS. "True" to turn on.
 
