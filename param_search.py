@@ -190,7 +190,8 @@ space = {'DERIVATION_PRIORITY_LEAK': hp.uniform('DERIVATION_PRIORITY_LEAK', 0.1,
         'VARIABLE_INTRODUCTION_COMBINATIONS_MAX': hp.quniform('VARIABLE_INTRODUCTION_COMBINATIONS_MAX', 0, 0, 1),
         'SEQUENCE_BAG_ATTEMPTS': hp.quniform('SEQUENCE_BAG_ATTEMPTS', 0, 0, 1),
         'TERM_LINK_MAX_MATCHED': hp.quniform('TERM_LINK_MAX_MATCHED', 30, 50, 1)}
-
+print(space)
+exit()
 # Execute hyperopt param search
 if debug:
     best = fmin(objective, space, algo=tpe.suggest, max_evals=num_evals)
