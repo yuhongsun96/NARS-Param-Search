@@ -19,3 +19,8 @@ https://github.com/opennars/opennars
 
 4. Run with python3 param_search.py
 
+Configuring Runs:
+-----------------
+Configurations are done through config.json
+1. NARS input files: A list of Narsese files to pass to NARS to reason about
+2. NARS parameters: System parameters for NARS. Should take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for availble NARS parameter fields.
