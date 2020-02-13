@@ -1,15 +1,12 @@
-# Hyperparameter search for openNARS using toothbrush.nal
+# Hyperparameter search for openNARS
 
-To run, first compile and replace opennars-3.0.4-SNAPSHOT.jar from the opennars git page\
-Recompile java NARS wrapper with javac -cp \\* *.java
+How to Use:
+-----------
+1. The NARS jar is required which can be built from the opennars git page:\
+https://github.com/opennars/opennars
 
-Run with python3 param_search.py
+2. Recompile the java NARS wrapper with javac -cp .:* run_nars.java
 
-**Brief Overview:**\
-run_nars.java is a wrapper to invoke NARS in the shell with all default parameters excepting the 4 passed in through args\
-This file takes in toothbrush.nal and passes it to NARS
+3. Edit the parameters, input files and run configurations in config.json
 
-param_search.py uses hyperopt with the search space defined by the 4 parameters:\
-DERIVATION_PRIORITY_LEAK, VARIABLE_INTRODUCTION_COMBINATIONS_MAX, SEQUENCE_BAG_ATTEMPTS and TERM_LINK_MAX_MATCHED\
-It invokes run_nars and pipes the output for analysis to look for the relevent goals from NARS output.\
-The loss for hyperopt optimization is the sum of the cycles where the goals first appear.
+4. Run with python3 param_search.py
