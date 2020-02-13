@@ -2,11 +2,7 @@
 
 What it does:
 -------------
-This is a hyperparameter tuning suite for the Non-Axiomatic Reasoning System for applied use cases. It uses Hyperopt to sample the user defined search space to find the best performing parameters given a set of Narsese input files. 
-- For each set of parameters, it executes a user defined number of runs of NARS, each starting from a random initial state.
-- NARS runs until all target statements in the Narsese file have been deduced by NARS or a specified timeout is reached.
-- Each run of NARS is benchmarked with an objective functions. The final loss for a set of parameters is taken to be the average performance across the runs of NARS.
-- A few predefined objective functions are available to choose from. Custom objectives can also be added in objectives.py.
+Provide a hyperparameter tuning suite for the Non-Axiomatic Reasoning System for applied use cases. Uses Hyperopt to sample a user defined search space to find the best performing parameters given a set of Narsese input files. 
 
 How to Use:
 -----------
@@ -22,5 +18,13 @@ https://github.com/opennars/opennars
 Configuring Runs:
 -----------------
 Configurations are done through config.json
-1. NARS input files: A list of Narsese files to pass to NARS to reason about
-2. NARS parameters: System parameters for NARS. Should take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for availble NARS parameter fields.
+- NARS input files: A list of Narsese files to pass to NARS to reason about
+- NARS parameters: System parameters for NARS. Should take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for availble NARS parameter fields.
+- optimization objective: name of one of the functions in objectives.py. Default available ones include "chain_length" (to minimize the length of the longest inference chain for a target statement), "num_cycles" (to minimize number of NARS cycles before deducing target statement), and "real_time" (to minimize the time taken before NARS is able to conclude the target statement).
+- debug: Very verbose run of only a single iteration of hyperopt and a single run of NARS. "True" to turn on.
+
+
+- For each set of parameters, it executes a user defined number of runs of NARS, each starting from a random initial state.
+- NARS runs until all target statements in the Narsese file have been deduced by NARS or a specified timeout is reached.
+- Each run of NARS is benchmarked with an objective functions. The final loss for a set of parameters is taken to be the average performance across the runs of NARS.
+- A few predefined objective functions are available to choose from. Custom objectives can also be added in objectives.py.
