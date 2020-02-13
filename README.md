@@ -34,9 +34,9 @@ Configurations are done through config.json
 
 Execution Details:
 ------------------
-- A set of parameters to benchmark is provided by the Hyperopt framework.
-- For each set of parameters, executes a user defined number of runs of NARS, each starting from a random initial state.
-- NARS runs until all target statements in the Narsese file have been deduced by NARS or a specified timeout is reached.
-- Each run of NARS is benchmarked with an objective functions. The final loss for a set of parameters is taken to be the average performance across the runs of NARS.
-- The set of parameters that led to the optimal result is kept.
-
+1. A set of parameters to benchmark is provided by the Hyperopt framework based on user provided ranges.
+2. For each set of parameters, executes a user defined number of runs of NARS. Each instance of NARS runs as it's own subprocess and each starts from a random initial state. Randomly delay for up to 1 second to ensure that the state of NARS varies when the narsese inputs are provided.
+3. NARS runs until all target statements of the Narsese file have been deduced by NARS or a specified timeout is reached.
+4. Each run of NARS is benchmarked with an objective functions. The final loss for a set of parameters is taken to be the average performance across the runs of NARS.
+5. Based on the results from this set of parameters, Hyperopt will propose another set of parameters. 
+6. At the end, the set of parameters that led to the optimal result is kept and displayed.
