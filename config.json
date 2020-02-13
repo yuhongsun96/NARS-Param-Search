@@ -11,11 +11,11 @@
     ["TERM_LINK_MAX-MATCHED", 1, 50]
   ],
 
-  "optimization objective": "chain_length",
+  "optimization objective": "real_time",
   "failure penalty": 100,
-  "Hyperopt iterations": 10,
-  "NARS runs per iteration": 8,
-  "cpu cores": 4,
+  "Hyperopt iterations": 100,
+  "NARS runs per iteration": 16,
+  "cpu threads": 4,
   "NARS timeout": 10,
   "require exact truth value": "False",
 
