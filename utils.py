@@ -34,6 +34,10 @@ NARS_TO = config['NARS timeout']
 batch_TO = config['batch timeout']
 exact_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true" )
 
+# Single run if running in debug mode
+if debug:
+    hyperopt_iters = runs_per_iter = cores = 1
+    nars_files = [nars_files[0]]
 
 def extract_targets(nars_file):
     """ Extract the target statements that NARS is suppose to generate given the input file
@@ -52,8 +56,8 @@ def extract_targets(nars_file):
                 if exact_TV: targets.append(line.split(target_stamp)[1][:-3])
                 else: targets.append(line.split(target_stamp)[1].split("%")[0])
     if debug:       
-        print("\tFound Target Statements: ")
-        [print("\t" + target) for target in targets]
+        print("\n\tFound Target Statements: ")
+        [print("\t\t" + target) for target in targets]
         print("\n")
         time.sleep(1)
     return targets
@@ -106,11 +110,14 @@ def run_nars(args_file_tuple):
             value = str(int(args[key]))
         process_cmd.append(flag)
         process_cmd.append(value)
-    if debug: print("\tExecuting: " + str(process_cmd))
+    if debug: print("\nExecuting: " + str(process_cmd) + "\n")
     
     # Execute NARS in shell mode and capture output
     process = subprocess.Popen(process_cmd, stdout=subprocess.PIPE)
     fd = process.stdout
+    
+    # Start timing NARS
+    start_time = time.time()
 
     # Run NARS until all target statements are found or the timeout is reached
     found_targets = []
@@ -122,29 +129,30 @@ def run_nars(args_file_tuple):
         for target in targets:
             if (target in newline) and (target not in found_targets) and ("ECHO:" not in newline) and ("IN:" not in newline):
                 found_targets.append(target)
-                if debug: print("Found target line: " + newline)
+                if debug: print("Found target line:\n" + newline)
 
     # Read a few more lines for context following last target (such as DEBUG: outputs)
     for i in range(10):
         content.append(fd.readline().decode('utf-8'))
     
-    # Kill the running NARS as it's no longer useful
+    # Kill the running NARS as it's no longer useful and get the time
     process.terminate()
-    
+    nars_run_time = time.time() - start_time
+
     # Return penalty from config.json if not all target statements were output by NARS
     if len(found_targets) < len(targets):
         if debug: 
             print("NARS failed to generate all require target statements")
-            print("Missing Targets:")
+            print("\tMissing Targets:")
             for target in targets:
                 if target not in found_targets:
-                    print(target)
+                    print("\t\t" + target)
         return failure_penalty
     
     # Select one of the objective functions defined in objectives.py
     objective_func = getattr(objectives, objective, None)
     if objective_func:
-        return mean([objective_func(target, content) for target in found_targets])
+        return mean([objective_func(target, content, nars_run_time, debug) for target in found_targets])
     else:
         print("\n\n\n\nFatal:objective function is not found, please select valid objective in config.json\nExiting")
         exit()
