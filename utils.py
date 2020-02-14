@@ -15,11 +15,11 @@ def longest_ancestry(statement, text, depth, debug, failure_penalty):
 
     Args:
         statement: pattern to search for in the text
-        text: body of text to search pattern in, 
+        text: body of text to search pattern in,
               only contains NARS output which came earlier than statement
         depth: Current depth from the top (original target statement from Narsese file)
         debug: Very verbose output showing every statement of interest and it's parents
-        
+
     """
     # Iterate text to find target statement and retrieve its parent statements (next 2 lines)
     if debug: print("target: " + statement)
@@ -37,9 +37,9 @@ def longest_ancestry(statement, text, depth, debug, failure_penalty):
         elif statement in line and "OUT: " in line:
             keep = 2
             last_line = ind
-    
+
     # Failsafe, in case target statement is not found
-    if parent1 == None or parent2 == None:
+    if not parent1 or not parent2:
         print("Unable to find parents")
         return failure_penalty
 
@@ -61,8 +61,14 @@ def longest_ancestry(statement, text, depth, debug, failure_penalty):
     parent2 = parent2.split(debug_str_2)[1].split(" %")[0]
 
     # If parent is null, that branch is done, else call longest ancestry again
-    len1 = depth + 1 if regex_null.search(parent1) else longest_ancestry(parent1, text[:ind], depth + 1, debug)
-    len2 = depth + 1 if regex_null.search(parent2) else longest_ancestry(parent2, text[:ind], depth + 1, debug)
+    if regex_null.search(parent1):
+        len1 = depth + 1
+    else:
+        len1 = longest_ancestry(parent1, text[:ind], depth + 1, debug, failure_penalty)
+    if regex_null.search(parent2):
+        len2 = depth + 1
+    else:
+        len2 = longest_ancestry(parent2, text[:ind], depth + 1, debug, failure_penalty)
 
     # Return longest path of ancestry tree
     return max(len1, len2)

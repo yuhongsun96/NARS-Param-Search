@@ -11,7 +11,7 @@
     ["TERM_LINK_MAX-MATCHED", 1, 50]
   ],
 
-  "optimization objective": "real_time",
+  "optimization objective": "chain_length",
   "failure penalty": 100,
   "Hyperopt iterations": 100,
   "NARS runs per iteration": 16,

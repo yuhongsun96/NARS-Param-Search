@@ -26,7 +26,7 @@ def chain_length(target, content, nars_run_time, debug, failure_penalty):
 def num_cycles(target, content, nars_run_time, debug, failure_penalty):
     for line in content:
         if (target in line) and ("ECHO:" not in line) and ("IN:" not in line):
-            return int(re.findall('% {\d+', line)[0][3:])
+            return int(re.findall(r'% {\d+', line)[0][3:])
     # Failsafe, should not happen
     print("Failed to find target in content")
     return failure_penalty

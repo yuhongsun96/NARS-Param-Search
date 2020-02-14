@@ -152,19 +152,14 @@ def run_nars(args_file_tuple):
     if objective_func:
         return mean([objective_func(target, content, nars_run_time, DEBUG, FAILURE_PENALTY) for target in found_targets])
     else:
-        print("\n\n\n\nFatal:objective function is not found, please select valid objective in config.json\nExiting")
-        exit()
+        print("\n\n\n\nFatal: objective function is not found\n       Please select valid objective in config.json")
     return FAILURE_PENALTY
 
 
-def signal_handler(signum, frame):
+def signal_handler():
     """ Handles edge case where a spawned process hangs
-    Occurs very rarely when spawning parallel subprocesses with multiprocess pool
+    Occurs very rarely when spawning parallel subprocesses with subprocess.pool
     Caller simply abandons the batch and retries
-
-    Args:
-        signum: signal number
-        frame: current stack frame
     """
     # No additional handling required except a message as caller simply retries batch
     raise Exception("\t\tBatch timed out, retrying")
@@ -195,7 +190,7 @@ def parallelized_objective(args):
                     success = True
                 # If not successful, print a message and try again
                 except Exception as e:
-                        print(str(e))
+                    print(str(e))
 
     # Average the losses across all runs of NARS
     loss = mean(losses)
