@@ -159,10 +159,14 @@ def run_nars(args_file_tuple):
     return FAILURE_PENALTY
 
 
-def signal_handler():
+def signal_handler(signal, frame):
     """ Handles edge case where a spawned process hangs
     Occurs very rarely when spawning parallel subprocesses with subprocess.pool
     Caller simply abandons the batch and retries
+
+    Args:
+        signal: received signal
+        frame: current stack frame
     """
     # No additional handling required except a message as caller simply retries batch
     raise Exception("\t\tBatch timed out, retrying")
