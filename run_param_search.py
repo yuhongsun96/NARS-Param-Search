@@ -33,7 +33,7 @@ NARS_TO = config['NARS timeout']
 BATCH_TO = config['batch timeout']
 EXACT_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true")
 
-print("Running parameter search using goal: " + OBJECTIVE + "\n")
+print("Running hyperparameter search with goal: " + OBJECTIVE + "\n")
 
 # Single run if running in debug mode
 if DEBUG:
@@ -179,6 +179,7 @@ def parallelized_objective(args):
     # Handle each Narsese file in sequence
     for nars_file in NARS_FILES:
         print("\n\tBenchmarking file: " + nars_file.split("/")[-1])
+        file_loss = []
         # Created batches for each file
         for _ in range(round(RUNS_PER_ITER / THREADS)):
             success = False
@@ -190,10 +191,12 @@ def parallelized_objective(args):
                         batch = p.map(run_nars, [(args, nars_file)] * THREADS)
                         print("\t\tBatch results: " + str(batch))
                     losses += batch
+                    file_loss += batch
                     success = True
                 # If not successful, print a message and try again
                 except Exception as e:
                     print(str(e))
+        print("\tFile average loss: " + str(mean(file_loss)))
 
     # Average the losses across all runs of NARS
     loss = mean(losses)

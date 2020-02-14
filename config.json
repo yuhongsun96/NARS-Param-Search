@@ -8,11 +8,11 @@
     ["DERIVATION_PRIORITY_LEAK", 0.1, 0.6],
     ["VARIABLE_INTRODUCTION_COMBINATIONS_MAX", 5, 10],
     ["SEQUENCE_BAG_ATTEMPTS", 5, 15],
-    ["TERM_LINK_MAX-MATCHED", 1, 50]
+    ["TERM_LINK_MAX_MATCHED", 10, 50]
   ],
 
   "optimization objective": "num_cycles",
-  "failure penalty": 100,
+  "failure penalty": 1000000,
   "Hyperopt iterations": 100,
   "NARS runs per iteration": 16,
   "cpu threads": 4,
