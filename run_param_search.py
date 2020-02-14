@@ -8,36 +8,34 @@ For help and details, refer to README.md
 """
 
 import subprocess
-import re
-import os
 import json
 import time
 import signal
 import multiprocessing as mp
-from statistics import mean 
-from hyperopt import hp, fmin, tpe, space_eval
+from statistics import mean
+from hyperopt import hp, fmin, tpe
 import objectives
 
 
 # Read config.json for initial setup, for details on the fields see README.md
 with open('config.json', 'r') as config_json:
     config = json.load(config_json)
-nars_files = config['NARS input files']
-params = config['NARS parameters']
-debug = (config['debug'] == "True" or config['debug'] == "True")
-objective = config['optimization objective']
-failure_penalty = config['failure penalty']
-hyperopt_iters = config['Hyperopt iterations']
-runs_per_iter = config['NARS runs per iteration']
-threads = config['cpu threads']
+NARS_FILES = config['NARS input files']
+PARAMS = config['NARS parameters']
+DEBUG = (config['debug'] == "True" or config['debug'] == "True")
+OBJECTIVE = config['optimization objective']
+FAILURE_PENALTY = config['failure penalty']
+HYPEROPT_ITERS = config['Hyperopt iterations']
+RUNS_PER_ITER = config['NARS runs per iteration']
+THREADS = config['cpu threads']
 NARS_TO = config['NARS timeout']
-batch_TO = config['batch timeout']
-exact_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true" )
+BATCH_TO = config['batch timeout']
+EXACT_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true")
 
 # Single run if running in debug mode
-if debug:
-    hyperopt_iters = runs_per_iter = threads = 1
-    nars_files = [nars_files[0]]
+if DEBUG:
+    HYPEROPT_ITERS = RUNS_PER_ITER = THREADS = 1
+    NARS_FILES = [NARS_FILES[0]]
 
 def extract_targets(nars_file):
     """ Extract the target statements that NARS is suppose to generate given the input file
@@ -53,9 +51,9 @@ def extract_targets(nars_file):
     with open(nars_file, "r") as narsese:
         for line in narsese:
             if target_stamp in line:
-                if exact_TV: targets.append(line.split(target_stamp)[1][:-3])
+                if EXACT_TV: targets.append(line.split(target_stamp)[1][:-3])
                 else: targets.append(line.split(target_stamp)[1].split("%")[0])
-    if debug:       
+    if DEBUG:
         print("\n\tFound Target Statements: ")
         [print("\t\t" + target) for target in targets]
         print("\n")
@@ -71,13 +69,13 @@ def get_space():
         dictionary with the keys as the named dimensions and values as hyperopt hp pointers
     """
     space = {}
-    for param in params:
-        # 3 value param expected to follow format: [name, lowerbound, upperbound] 
+    for param in PARAMS:
+        # 3 value param expected to follow format: [name, lowerbound, upperbound]
         if type(param[1]) == float or type(param[2]) == float:
             space[param[0]] = hp.uniform(param[0], param[1], param[2])
         elif type(param[1]) == int or type(param[2]) == int:
             space[param[0]] = hp.quniform(param[0], param[1], param[2], 1)
-        # 2 value param expected to follow format: [name, True/False] 
+        # 2 value param expected to follow format: [name, True/False]
         elif len(param) == 2:
             space[param[0]] = hp.quniform(param[0], 0, 1, 1)
     return space
@@ -97,7 +95,7 @@ def run_nars(args_file_tuple):
     # Expand the arguments to parameters for NARS and a Narsese file path
     args = args_file_tuple[0]
     nars_file = args_file_tuple[1]
-    
+
     # Extract target statements
     targets = extract_targets(nars_file)
 
@@ -110,12 +108,12 @@ def run_nars(args_file_tuple):
             value = str(int(args[key]))
         process_cmd.append(flag)
         process_cmd.append(value)
-    if debug: print("\nExecuting: " + str(process_cmd) + "\n")
-    
+    if DEBUG: print("\nExecuting: " + str(process_cmd) + "\n")
+
     # Execute NARS in shell mode and capture output
     process = subprocess.Popen(process_cmd, stdout=subprocess.PIPE)
     fd = process.stdout
-    
+
     # Start timing NARS
     start_time = time.time()
 
@@ -129,34 +127,34 @@ def run_nars(args_file_tuple):
         for target in targets:
             if (target in newline) and (target not in found_targets) and ("ECHO:" not in newline) and ("IN:" not in newline):
                 found_targets.append(target)
-                if debug: print("Found target line:\n" + newline)
+                if DEBUG: print("Found target line:\n" + newline)
 
     # Read a few more lines for context following last target (such as DEBUG: outputs)
-    for i in range(10):
+    for _ in range(10):
         content.append(fd.readline().decode('utf-8'))
-    
+
     # Kill the running NARS as it's no longer useful and get the time
     process.terminate()
     nars_run_time = time.time() - start_time
 
     # Return penalty from config.json if not all target statements were output by NARS
     if len(found_targets) < len(targets):
-        if debug: 
+        if DEBUG:
             print("NARS failed to generate all require target statements")
             print("\tMissing Targets:")
             for target in targets:
                 if target not in found_targets:
                     print("\t\t" + target)
-        return failure_penalty
-    
+        return FAILURE_PENALTY
+
     # Select one of the objective functions defined in objectives.py
-    objective_func = getattr(objectives, objective, None)
+    objective_func = getattr(objectives, OBJECTIVE, None)
     if objective_func:
-        return mean([objective_func(target, content, nars_run_time, debug) for target in found_targets])
+        return mean([objective_func(target, content, nars_run_time, DEBUG, FAILURE_PENALTY) for target in found_targets])
     else:
         print("\n\n\n\nFatal:objective function is not found, please select valid objective in config.json\nExiting")
         exit()
-    return failure_penalty
+    return FAILURE_PENALTY
 
 
 def signal_handler(signum, frame):
@@ -174,24 +172,24 @@ def signal_handler(signum, frame):
 
 def parallelized_objective(args):
     """ Uses subprocess to create parallel instances of NARS and run objective functions in parallel
-    
+
     Args:
-        args: hyperopt generated values for each named dimension to be translated into NARS parameters 
+        args: hyperopt generated values for each named dimension to be translated into NARS parameters
     """
     print("Iteration using parameters:\n" + str(args))
     losses = []
     # Handle each Narsese file in sequence
-    for nars_file in nars_files:
+    for nars_file in NARS_FILES:
         print("\n\tBenchmarking file: " + nars_file.split("/")[-1])
         # Created batches for each file
-        for it in range(round(runs_per_iter / threads)):
+        for _ in range(round(RUNS_PER_ITER / THREADS)):
             success = False
             while not success:
                 # Each batch is given a maximum time before it is assumed a worker hung
-                signal.alarm(batch_TO)
+                signal.alarm(BATCH_TO)
                 try:
-                    with mp.Pool(threads) as p:
-                        batch = p.map(run_nars, [(args, nars_file)] * threads)
+                    with mp.Pool(THREADS) as p:
+                        batch = p.map(run_nars, [(args, nars_file)] * THREADS)
                         print("\t\tBatch results: " + str(batch))
                     losses += batch
                     success = True
@@ -216,5 +214,5 @@ signal.signal(signal.SIGALRM, signal_handler)
 hyperopt_search_space = get_space()
 
 # Run hyperopt and keep the best parameters
-best = fmin(parallelized_objective, hyperopt_search_space, algo=tpe.suggest, max_evals=hyperopt_iters)
+best = fmin(parallelized_objective, hyperopt_search_space, algo=tpe.suggest, max_evals=HYPEROPT_ITERS)
 print(best)

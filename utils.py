@@ -10,7 +10,7 @@ import re
 regex_null = re.compile(r'\s?null\s?')
 debug_str_1 = "DEBUG: Parent Belief\t"
 debug_str_2 = "DEBUG: Parent Task\t"
-def longest_ancestry(statement, text, depth, debug):
+def longest_ancestry(statement, text, depth, debug, failure_penalty):
     """ Recursive tree traversal through parents of statement
 
     Args:
@@ -41,7 +41,7 @@ def longest_ancestry(statement, text, depth, debug):
     # Failsafe, in case target statement is not found
     if parent1 == None or parent2 == None:
         print("Unable to find parents")
-        return penalty_failed
+        return failure_penalty
 
     if debug: print("parent 1: " + parent1)
     if debug and regex_null.search(parent1): print("Terminal case parent 1")
@@ -54,7 +54,7 @@ def longest_ancestry(statement, text, depth, debug):
         print("Parent 1:\n" + parent1)
         print("Parent 2:\n" + parent2)
         print("Unexpected parent string")
-        return penalty_failed
+        return failure_penalty
 
     # Trim off label and truth value
     parent1 = parent1.split(debug_str_1)[1].split(" %")[0]
