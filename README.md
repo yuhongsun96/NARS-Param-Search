@@ -22,17 +22,17 @@ https://github.com/opennars/opennars
 Configuring Runs:
 -----------------
 Configurations are done through config.json
-- [NARS input files]: A list of Narsese files to pass to NARS to reason about
-- [NARS parameters]: System parameters for NARS. Must take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for available NARS parameter fields.
-- [optimization objective]: Benchmarking criteria for a NARS run. Must be the name of one of the functions in objectives.py. Default available functions include: "chain_length" (to minimize the length of the longest inference chain to reach a target statement), "num_cycles" (to minimize number of NARS cycles before deducing target statement), and "real_time" (to minimize the time NARS takes to conclude the target statement).
-- [failure penalty]: The penalty value for runs where NARS fails to deduce all target statements.
-- [Hyperopt iterations]: Number of Hyperopt iterations to run (number of parameter sets to test).
-- [NARS runs per iteration]: Number of trials of NARS to run and average for a single iteration of Hyperopt.
-- [cpu threads]: Number of cpu threads available for parallelizing runs of NARS.
-- [NARS timeout]: Time in seconds before it is assumed NARS will not be able to deduce the target statements.
-- [require exact truth value]: Whether a derived NARS statement can match a target even if the truth values are not an exact match. "True" to require exact match.
-- [batch timeout]: Time in seconds before it is assumed one of the subprocesses hung and a batch needs to be run again.
-- [debug]: Very verbose run of only a single iteration of hyperopt and a single run of NARS. "True" to turn on.
+- NARS input files: A list of Narsese files to pass to NARS to reason about
+- NARS parameters: System parameters for NARS. Must take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for available NARS parameter fields.
+- optimization objective: Benchmarking criteria for a NARS run. Must be the name of one of the functions in objectives.py. Default available functions include: "chain_length" (to minimize the length of the longest inference chain to reach a target statement), "num_cycles" (to minimize number of NARS cycles before deducing target statement), and "real_time" (to minimize the time NARS takes to conclude the target statement).
+- failure penalty: The penalty value for runs where NARS fails to deduce all target statements.
+- Hyperopt iterations: Number of Hyperopt iterations to run (number of parameter sets to test).
+- NARS runs per iteration: Number of trials of NARS to run and average for a single iteration of Hyperopt.
+- cpu threads: Number of cpu threads available for parallelizing runs of NARS.
+- NARS timeout: Time in seconds before it is assumed NARS will not be able to deduce the target statements.
+- require exact truth value: Whether a derived NARS statement can match a target even if the truth values are not an exact match. "True" to require exact match.
+- batch timeout: Time in seconds before it is assumed one of the subprocesses hung and a batch needs to be run again.
+- debug: Very verbose run of only a single iteration of hyperopt and a single run of NARS. "True" to turn on.
 
 Execution Details:
 ------------------
