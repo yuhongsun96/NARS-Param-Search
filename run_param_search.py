@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """ NARS benchmarking using hyperopt
 
 This module uses hyperopt to explore a user defined hyperparameter search space for NARS
@@ -31,6 +32,8 @@ THREADS = config['cpu threads']
 NARS_TO = config['NARS timeout']
 BATCH_TO = config['batch timeout']
 EXACT_TV = (config['require exact truth value'] == "True" or config['require exact truth value'] == "true")
+
+print("Running parameter search using goal: " + OBJECTIVE + "\n")
 
 # Single run if running in debug mode
 if DEBUG:

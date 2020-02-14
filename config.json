@@ -6,12 +6,12 @@
 
   "NARS parameters": [
     ["DERIVATION_PRIORITY_LEAK", 0.1, 0.6],
-    ["VARIABLE_INTRODUCTION_COMBINATIONS_MAX", 1, 10],
-    ["SEQUENCE_BAG_ATTEMPTS", 1, 10],
+    ["VARIABLE_INTRODUCTION_COMBINATIONS_MAX", 5, 10],
+    ["SEQUENCE_BAG_ATTEMPTS", 5, 15],
     ["TERM_LINK_MAX-MATCHED", 1, 50]
   ],
 
-  "optimization objective": "chain_length",
+  "optimization objective": "num_cycles",
   "failure penalty": 100,
   "Hyperopt iterations": 100,
   "NARS runs per iteration": 16,
@@ -19,6 +19,6 @@
   "NARS timeout": 10,
   "require exact truth value": "False",
 
-  "batch timeout": 60,
+  "batch timeout": 20,
   "debug": "False"
 }
