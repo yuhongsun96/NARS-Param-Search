@@ -17,7 +17,7 @@ https://github.com/opennars/opennars
 
 4. If desired, a custom objective function can be added in objectives.py and pointed to by "optimization objective" in config.json.
 
-4. Run with python3 param_search.py
+4. Run with ./run_param_search.py or python3 run_param_search.py
 
 Configuring Runs:
 -----------------
