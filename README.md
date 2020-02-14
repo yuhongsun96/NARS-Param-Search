@@ -2,7 +2,7 @@
 
 What it does:
 -------------
-Provide a hyperparameter tuning suite for the Non-Axiomatic Reasoning System for applied use cases. Uses Hyperopt to sample a user defined search space to find the best performing parameters given a set of Narsese input files. 
+Provides a hyperparameter tuning suite for the Non-Axiomatic Reasoning System (NARS) for applied use cases. Uses Hyperopt to sample a user defined search space and find the best performing parameters given a set of Narsese input files. 
 
 How to Use:
 -----------
@@ -21,7 +21,7 @@ Configuring Runs:
 -----------------
 Configurations are done through config.json
 - NARS input files: A list of Narsese files to pass to NARS to reason about
-- NARS parameters: System parameters for NARS. Must take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for availble NARS parameter fields.
+- NARS parameters: System parameters for NARS. Must take format of either \["name", min-val, max-val\] or \["name", "True/False"\]. Refer to defaultConfig.xml for available NARS parameter fields.
 - optimization objective: Benchmarking criteria for a NARS run. Must be the name of one of the functions in objectives.py. Default available functions include: "chain_length" (to minimize the length of the longest inference chain to reach a target statement), "num_cycles" (to minimize number of NARS cycles before deducing target statement), and "real_time" (to minimize the time NARS takes to conclude the target statement).
 - failure penalty: The penalty value for runs where NARS fails to deduce all target statements.
 - Hyperopt iterations: Number of Hyperopt iterations to run (number of sets of parameters to test)
