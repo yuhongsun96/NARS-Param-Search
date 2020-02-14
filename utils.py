@@ -44,9 +44,9 @@ def longest_ancestry(statement, text, depth, debug, failure_penalty):
         return failure_penalty
 
     if debug: print("parent 1: " + parent1)
-    if debug and regex_null.search(parent1): print("Terminal case parent 1")
+    if debug and regex_null.search(parent1): print("Terminal case, parent 1\n")
     if debug: print("parent 2: " + parent2)
-    if debug and regex_null.search(parent2): print("Terminal case parent 2")
+    if debug and regex_null.search(parent2): print("Terminal case, parent 2\n")
 
     # Failsafe, the two lines following the OUT: line with target should be the 2 Debug parent statements
     if debug_str_1 not in parent1 or debug_str_2 not in parent2:
