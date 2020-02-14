@@ -2,7 +2,7 @@
 
 What it does:
 -------------
-Provide a hyperparameter tuning suite for the Non-Axiomatic Reasoning System for applied use cases. Uses Hyperopt to sample a user defined search space to find the best performing parameters given a set of Narsese input files. 
+Provides a hyperparameter tuning suite for the Non-Axiomatic Reasoning System (NARS) for applied use cases. Uses Hyperopt to sample a user defined search space and find the best performing parameters given a set of Narsese input files. 
 
 How to Use:
 -----------
