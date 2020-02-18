@@ -1,5 +1,9 @@
 # Hyperparameter search for openNARS
 
+Disclaimer:
+-----------
+This repository has been migrated to https://github.com/opennars/opennars-applications under HyperparameterSearch. The code is now maintained there. Please check there for latest version.
+
 What it Does:
 -------------
 Provides a hyperparameter tuning suite for the Non-Axiomatic Reasoning System (NARS) for applied use cases. Uses Hyperopt to sample a user defined search space and find the best performing parameters given a set of Narsese input files. 
@@ -34,7 +38,7 @@ Configurations are done through config.json
 - batch timeout: Time in seconds before it is assumed one of the subprocesses hung and a batch needs to be run again.
 - debug: Very verbose run of only a single iteration of hyperopt and a single run of NARS. "True" to turn on.
 
-Execution Details:
+Implementation Details:
 ------------------
 1. A set of parameters to benchmark is provided by the Hyperopt framework based on user provided ranges.
 2. For each set of parameters, executes a user defined number of runs of NARS. Each instance of NARS runs as it's own subprocess and each starts from a random initial state. Randomly delay for up to 100 millisecond to ensure that the state of NARS varies when the narsese inputs are provided. 
