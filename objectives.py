@@ -15,6 +15,9 @@ All methods must take the same parameters and return a single int/float/double
 
 """
 
+__authors__ = "Yuhong Sun"
+__license__ = "MIT License"
+
 import re
 import utils
 

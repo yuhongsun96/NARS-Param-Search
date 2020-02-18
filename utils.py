@@ -5,6 +5,9 @@ For helping organization if user wishes to add custom objectives
 
 """
 
+__authors__ = "Yuhong Sun"
+__license__ = "MIT License"
+
 import re
 
 regex_null = re.compile(r'\s?null\s?')

@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) Yuhong Sun 2020.
+ * Distributed under the MIT License (license terms at http://opensource.org/licenses/MIT).
+ */
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;

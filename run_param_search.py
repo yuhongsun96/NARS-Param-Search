@@ -8,6 +8,9 @@ For help and details, refer to README.md
 
 """
 
+__authors__ = "Yuhong Sun"
+__license__ = "MIT License"
+
 import subprocess
 import json
 import time
