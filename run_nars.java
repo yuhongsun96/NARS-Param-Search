@@ -70,7 +70,7 @@ class run_nars{
 
         //Randomly choose an initial state since NARS is pseudo-random
         Random r = new Random();
-        TimeUnit.MILLISECONDS.sleep(r.nextInt(1000));
+        TimeUnit.MILLISECONDS.sleep(r.nextInt(100));
         
         //Give NARS input string, output should begin coming on the shell
         nar.addInput(toothbrushfile);
