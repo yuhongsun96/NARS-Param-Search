@@ -2,7 +2,7 @@
 
 Disclaimer:
 -----------
-This repository has been migrated to https://github.com/opennars/opennars-lab under HyperparameterSearch. The code is now maintained there. Please check there for latest version.
+This branch is used for benchmarking OpenNARS-for-Applications. Make sure to build the submodule using ./build.sh in the submodule folder.
 
 What it Does:
 -------------
