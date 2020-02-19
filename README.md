@@ -15,7 +15,7 @@ Requires: Java, Python3, and Hyperopt for Python3
 1. Place a NARS jar at the base of the repo. It can be built from the opennars git page:\
 https://github.com/opennars/opennars
 
-2. Recompile the java NARS wrapper with javac -cp opennars-3.0.4-SNAPSHOT.jar run_nars.java
+2. Recompile the java NARS wrapper with javac -cp .:* run_nars.java
 
 3. If desired, edit the parameters, input files and run configurations in config.json.
 
