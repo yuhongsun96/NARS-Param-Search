@@ -2,7 +2,7 @@
 
 Disclaimer:
 -----------
-This repository has been migrated to https://github.com/opennars/opennars-applications under HyperparameterSearch. The code is now maintained there. Please check there for latest version.
+This repository has been migrated to https://github.com/opennars/opennars-lab under HyperparameterSearch. The code is now maintained there. Please check there for latest version.
 
 What it Does:
 -------------
